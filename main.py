@@ -3,14 +3,17 @@ class Chatbot:
         self.name = name
     
     def pozdrav(self):
-        print("Zavolala sa funkcia pozdrav " + self.name)
         return f"Ahoj, moje meno je {self.name}"
+    
+    def chat(self):
+        print(self.pozdrav())
         
 
 
 
 bot = Chatbot("Bot1")
 
+bot.chat()
 
 
 
