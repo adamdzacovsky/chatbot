@@ -11,6 +11,10 @@ class Chatbot:
         jokes = ["toto je prvy joke", "toto je druhy joke", "toto je treti joke"]
         return random.choice(jokes)
     
+    def advice(self):
+        advices = ["toto je prva rada", "toto je druha rada", "toto je tretia rada"]
+        return random.choice(advices)
+    
     def respond(self,user_input):
         user_input = user_input.lower()
 
@@ -20,6 +24,8 @@ class Chatbot:
             return "maj sa pekne"
         elif "vtip" in user_input:
             return self.tell_joke()
+        elif "rada" in user_input or "radu" in user_input:
+            return self.advice()
         else:
             return "toto zataial nerozumiem"
     
