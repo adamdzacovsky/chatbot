@@ -17,8 +17,12 @@ class Chatbot:
     
     def chat(self):
         print(self.greet())
-        
-
+        while True:
+            user_input = input("Ty: ")
+            response = self.respond(user_input)
+            print(f"{self.name}: {response}")
+            if "koniec" in user_input:
+                break
 
 
 bot = Chatbot("Bot1")
