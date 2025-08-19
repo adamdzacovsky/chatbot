@@ -1,9 +1,15 @@
+import random
+
 class Chatbot: 
     def __init__(self, name = "Chatbotv1"):
         self.name = name
     
     def greet(self):
         return f"Ahoj, moje meno je {self.name}"
+    
+    def tell_joke(self):
+        jokes = ["toto je prvy joke", "toto je druhy joke", "toto je treti joke"]
+        return random.choice(jokes)
     
     def respond(self,user_input):
         user_input = user_input.lower()
@@ -12,6 +18,8 @@ class Chatbot:
             return "ahoj vitaj v chate"
         elif "koniec" in user_input:
             return "maj sa pekne"
+        elif "vtip" in user_input:
+            return self.tell_joke()
         else:
             return "toto zataial nerozumiem"
     
