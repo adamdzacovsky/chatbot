@@ -1,4 +1,5 @@
 import random
+import requests
 
 class Chatbot: 
     def __init__(self, name = "Chatbotv1"):
@@ -18,6 +19,12 @@ class Chatbot:
     def number(self, number, multiplied_by):
         return f"{number} multiplied by {multiplied_by} is {number * multiplied_by}"
     
+    def weather(self):
+        city = input("Which city: ")
+        url = f"https://wttr.in/{city}?format=%C+%t"
+        response = requests.get(url)
+        return response.text.strip()
+    
     def respond(self,user_input):
         user_input = user_input.lower()
        
@@ -34,6 +41,8 @@ class Chatbot:
             multiplied_by = input("Enter a number: ")
             print("Vstup je cislo") 
             return self.number(int(user_input), int(multiplied_by))
+        elif "weather" in user_input:
+            return self.weather()
         else:
             return "I can not understand this yet"
     
