@@ -15,22 +15,25 @@ class Chatbot:
         advices = ["This is the first advice", "This is the second advice", "This is the third advice"]
         return random.choice(advices)
     
-    def number(self, number):
-        return f"{number} multiplied by 10 is {number * 10}"
+    def number(self, number, multiplied_by):
+        return f"{number} multiplied by {multiplied_by} is {number * multiplied_by}"
     
     def respond(self,user_input):
         user_input = user_input.lower()
+       
 
         if "hi" in user_input:
-            return "Hi, welcome in the chat"
+            return "Hi, welcome in the chat"        
         elif "end" in user_input:
             return "Take care"
         elif "joke" in user_input:
             return self.tell_joke()
         elif "advice" in user_input or "advice" in user_input:
             return self.advice()
-        elif "10" in user_input:
-            return self.number(int(user_input))
+        elif user_input.isnumeric():
+            multiplied_by = input("Enter a number: ")
+            print("Vstup je cislo") 
+            return self.number(int(user_input), int(multiplied_by))
         else:
             return "I can not understand this yet"
     
