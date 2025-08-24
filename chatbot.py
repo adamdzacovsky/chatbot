@@ -1,5 +1,6 @@
 import random
 import requests
+import wikipedia
 
 class Chatbot: 
     def __init__(self, name = "Chatbotv1"):
@@ -25,6 +26,9 @@ class Chatbot:
         response = requests.get(url)
         return response.text.strip()
     
+    def wikipedia(self, keyword):
+        return wikipedia.summary(keyword)
+    
     def respond(self,user_input):
         user_input = user_input.lower()
        
@@ -43,6 +47,9 @@ class Chatbot:
             return self.number(int(user_input), int(multiplied_by))
         elif "weather" in user_input:
             return self.weather()
+        elif "wik" in user_input:
+            keyword = input("What do you want to search about: ")
+            return self.wikipedia(keyword)
         else:
             return "I can not understand this yet"
     
