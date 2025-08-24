@@ -5,35 +5,40 @@ class Chatbot:
         self.name = name
     
     def greet(self):
-        return f"Ahoj, moje meno je {self.name}"
+        return f"Hi, my name is {self.name}"
     
     def tell_joke(self):
-        jokes = ["toto je prvy joke", "toto je druhy joke", "toto je treti joke"]
+        jokes = ["This is the first joke", "This is the second joke", "This is the third joke"]
         return random.choice(jokes)
     
     def advice(self):
-        advices = ["toto je prva rada", "toto je druha rada", "toto je tretia rada"]
+        advices = ["This is the first advice", "This is the second advice", "This is the third advice"]
         return random.choice(advices)
+    
+    def number(self, number):
+        return f"{number} multiplied by 10 is {number * 10}"
     
     def respond(self,user_input):
         user_input = user_input.lower()
 
-        if "ahoj" in user_input:
-            return "ahoj vitaj v chate"
-        elif "koniec" in user_input:
-            return "maj sa pekne"
-        elif "vtip" in user_input:
+        if "hi" in user_input:
+            return "Hi, welcome in the chat"
+        elif "end" in user_input:
+            return "Take care"
+        elif "joke" in user_input:
             return self.tell_joke()
-        elif "rada" in user_input or "radu" in user_input:
+        elif "advice" in user_input or "advice" in user_input:
             return self.advice()
+        elif "10" in user_input:
+            return self.number(int(user_input))
         else:
-            return "toto zataial nerozumiem"
+            return "I can not understand this yet"
     
     def chat(self):
         print(self.greet())
         while True:
-            user_input = input("Ty: ")
+            user_input = input("You: ")
             response = self.respond(user_input)
             print(f"{self.name}: {response}")
-            if "koniec" in user_input:
+            if "End" in user_input:
                 break
