@@ -29,6 +29,14 @@ class Chatbot:
     def wikipedia(self, keyword):
         return wikipedia.summary(keyword)
     
+    def city_info(self):
+        city = input("Which city: ")
+        url = f"https://wttr.in/{city}?format=%C+%t"
+        summary = wikipedia.summary(city + "," + "Slovakia")
+        response = requests.get(url)
+        response_text = response.text.strip()
+        return summary + " Actual weather: " + response_text
+    
     def respond(self,user_input):
         user_input = user_input.lower()
        
@@ -50,6 +58,8 @@ class Chatbot:
         elif "wik" in user_input:
             keyword = input("What do you want to search about: ")
             return self.wikipedia(keyword)
+        elif "city" in user_input:
+            return self.city_info()
         else:
             return "I can not understand this yet"
     
